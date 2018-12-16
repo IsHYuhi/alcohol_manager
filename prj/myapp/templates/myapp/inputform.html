@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>お酒管理</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'prj/css/watch.css' %}">
+    <link rel="stylesheet" href="{% static 'prj/css/list.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <i id="open_menu" class="far fa-bars"></i>
+            <nav id="menu">
+                <i id="close_menu" class="fas fa-times"></i>
+
+                    <ul>
+                    <li>
+                        <a href="{% url 'myapp:home' %}">ホーム</a>
+                    </li>
+                </ul>
+
+            </nav>
+            <h1>入力フォーム</h1>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h1>飲んだお酒</h1>
+
+                <div id="app" class="container">
+
+                    <ul>
+                        <li v-for="(todo,index) in todos">
+                            {{todo}}
+                            <span @click="deleteItem(index)" class="command">[x]</span>
+                        </li>
+                    </ul>
+                    <p>お酒のリスト
+                      <script>
+                        if("{{result}}" != ""){
+                          document.write("{{result}}と判別されました")
+                        }
+                      </script>
+                        <a href="{% url 'myapp:home' %}">画像認識</a><br>
+                    <form action="{% url 'myapp:Input_View' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_table }}
+                        <tr><td></td><td><input type="submit" value="送信"></td></tr>
+                    </form>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+                <script src="{% static 'prj/js/list.js' %}"></script>
+
+            </section>
+
+                    <script src="{% static 'prj/js/menu.js' %}"></script>
+</body>
+
+</html>

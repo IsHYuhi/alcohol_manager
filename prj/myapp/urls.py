@@ -4,9 +4,11 @@ from . import views
 app_name = 'myapp'
 
 urlpatterns = [
-    path('home/', views.Index, name='home'),
+    path('home/', views.home, name='home'),
     path('result/', views.form_valid, name = 'form_valid'),
-    path('input/', views.Input_View, name = 'Input_View'),
+    path('input/', views.input, name = 'Input_View'),
     path('howtouse/', views.HowtoUse_View, name = 'HowtoUse_View'),
-    path('user/', views.User_View, name = 'User_View')
+    path('user/', views.User_View, name = 'User_View'),
+    path('database/', views.database, name='database'),
+    path('nowloading/',views.nowloading, name='nowloading')
 ]

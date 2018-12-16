@@ -1,6 +1,7 @@
 from django.db import models
 import hashlib
 import os.path
+from .name import NAME
 # Create your models here.
 
 # class Photo(models.Model):
@@ -65,3 +66,12 @@ class Photo(models.Model):
         super(Photo, self).delete()
 
     image = models.ImageField('画像', upload_to=get_image_path)
+
+
+class Alcohol(models.Model):
+    name = models.CharField(max_length=20, default = NAME)
+    degree = models.IntegerField(default=0) #百分率(%)でアルコール濃度の入力
+    value = models.IntegerField(default=0) #飲んだ量(ml)
+    number = models.IntegerField(default=0) #飲んだ本数(本)
+    #user_id = models.IntegerField() #user ID
+

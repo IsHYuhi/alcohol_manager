@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Photo
 from .forms import PhotoForm
+from django.http import HttpResponse
+from .models import Alcohol #models.pyのimport
+from .forms import AlcoholData #forms.pyのAlcoholData()のimport
+from time import sleep
+from .name import NAME
 
 #機械学習用
 import sys
@@ -18,9 +23,12 @@ DRINK_NAMES = {
   2: u"白ワイン"
 }
 
-def Index(req):
+def home(req):
+    f = open('/Users/yuhi/django/prj/myapp/name.py', 'w')
+    f.write("NAME = \"\" ")
+    f.close()
     if req.method == 'GET':
-        return render(req, 'myapp/index.html', {
+        return render(req, 'myapp/home.html', {
             'form': PhotoForm(),
             'photos': Photo.objects.all(), #いらないかも
         })
@@ -35,14 +43,18 @@ def Index(req):
         photo.save()
         return redirect('/myapp/result')
 
-def Input_View(req):
-    return render(req, 'myapp/home.html')
+# def Input_View(req):
+#     return render(req, 'myapp/home.html')
 
 def HowtoUse_View(req):
     return render(req, 'myapp/howtouse.html')
 
 def User_View(req):
     return render(req,'myapp/user.html')
+
+def nowloading(req):
+    return render(req, 'myapp/nowloading.html')
+
 
 def form_valid(request):
 
@@ -78,8 +90,44 @@ def form_valid(request):
         'result':rank3,
     }
 
-    return render(request,'myapp/home.html', context)
+    f = open('/Users/yuhi/django/prj/myapp/number.py', 'w')
+    f.write("NAME = '"+ rank3 +"'")
+    f.close()
 
+    return redirect( '/myapp/nowloading')
+    # return render(request,'myapp/inputform.html', context)
+
+def input(request):
+    if(request.method == 'POST'):
+        obj = Alcohol()
+        alcohol = AlcoholData(request.POST, instance=obj)
+        alcohol.save()
+        return redirect('/myapp/database')
+
+    params = {
+        'title': 'ホームページ',
+        'form': AlcoholData(),
+        'result':NAME,
+    }
+    return render(request, 'myapp/inputform.html', params)
+
+def database(request):
+    params = {
+        'title': 'データベース情報',
+        'message': 'データベースの全データです。',
+        'form': AlcoholData(),
+        'data': [],
+    }
+
+    #POST送信のチェック
+    if(request.method == 'POST'):
+        id = request.POST['id']
+        #params['data'] = Alcohol.objects.all().filter(user_id=id) #user_idとforms.pyの変数idの一致するものを表示
+        params['form'] = AlcoholData(request.POST)
+    else:
+        params['data'] = Alcohol.objects.all()
+
+    return render(request, 'myapp/database.html', params)
 
 
 

@@ -1,0 +1,32 @@
+{%load staticfiles%}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'prj/css/style.css'%}"/>
+</head>
+
+<body>
+    <h1>{{title}}</h1>
+    <p>{{message|safe}}</p>
+
+    <table>
+        <tr>
+            <th>名前</th>
+            <th>度数(%)</th>
+            <th>量(ml)</th>
+            <th>飲んだ本数</th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.degree}}</td>
+            <td>{{item.value}}</td>
+            <td>{{item.number}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'myapp:home' %}">ホーム</a>
+</body>
+</html>
