@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<h1>ホーム</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" accept="image/" value="投稿" />
+<br>
+  <a class="link_button" href="{% url 'myapp:Input_View' %}">入力</a>
+</br>
+</form>

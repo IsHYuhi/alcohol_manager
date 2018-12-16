@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>お酒管理</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <i id="open_menu" class="far fa-bars"></i>
+            <!--<nav id="menu" class="shown">-->
+            <nav id="menu">
+                <i id="close_menu" class="fas fa-times"></i>
+                <ul>
+                  <li>
+                      <a href="{% url 'myapp:home' %}">ホーム</a>
+                  </li>
+                    <li>
+                        <a href="{% url 'myapp:Input_View' %}">入力</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:User_View' %}">ユーザー</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:HowtoUse_View' %}">使用方法</a>
+                    </li>
+                </ul>
+            </nav>
+            <h1>使用方法</h1>
+
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+        <h1>アプリの使い方</h1>
+        <li>まず、ユーザ情報から身体情報を登録しておいてください。  *体調はその日の体調を入力する</li>
+        <li>ホームにある項目を入力してください。</li>
+        <li>入力された情報を元に、あなたに最適なお酒の量を表示、必要な水の量、アルコールが抜けるまでの時刻を通知します。</li>
+
+        <p>お酒の飲み過ぎを予防するアプリです。
+            <br>あくまでも推測によるものなので、目安としてご使用ください。</p>
+
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h1>白石麻衣</h1>
+                    <section class="feature">
+                        <img src="{% static 'prj/img/maiyan.jpg' %}">
+                        <p>言いたいことがあるんだよ やっぱり〇〇はかわいいよ すきすき大好き、やっぱ好き やっと見つけたお姫様 俺が生まれてきた理由 それは〇〇に出会うため 俺と一緒に人生歩もう 世界で一番愛してる ア・イ・シ・テ・ル</p>
+                    </section>
+
+                    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+
+</html>

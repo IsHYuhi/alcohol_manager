@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>お酒管理</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'prj/css/list.css' %}">
+    <link rel="stylesheet" href="{% static 'prj/css/watch.css' %}">
+    <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <i id="open_menu" class="far fa-bars"></i>
+            <nav id="menu">
+                <i id="close_menu" class="fas fa-times"></i>
+
+                    <ul>
+                      <li>
+                          <a href="{% url 'myapp:home' %}">ホーム</a>
+                      </li>
+                    <li>
+                        <a href="{% url 'myapp:Input_View' %}">入力</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:User_View' %}">ユーザー</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:HowtoUse_View' %}">使用方法</a>
+                    </li>
+                </ul>
+
+            </nav>
+            <h1>入力フォーム</h1>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h1>飲んだお酒</h1>
+
+                <div id="app" class="container">
+
+                    <ul>
+                        <li v-for="(todo,index) in todos">
+                            {{todo}}
+                            <span @click="deleteItem(index)" class="command">[x]</span>
+                        </li>
+                    </ul>
+                    <p>お酒のリスト
+                    <script>
+                      if("{{result}}" != ""){
+                        document.write("{{result}}と判別されました")
+                      }
+                    </script>
+                      <a href="{% url 'myapp:home' %}">画像認識</a><br>
+                    <form @submit.prevent="addItem">お酒を入力
+                      <br>
+                        <input type="text" value="{{result}}">
+                        <input type="submit" value="決定"> 入力例（ビール8％300ml）
+                    </form>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+                <script src="{% static 'prj/js/list.js' %}"></script>
+
+                <p>度数の入力
+                    <input type="number" name="number" min="1" max="99">%
+                    <input type="submit" name="submit" value="決定">
+                    <br>量を入力
+                    <input type="number" name="number" min="10" max="1000">ml
+                    <input type="submit" name="submit" value="決定">
+                </p>
+
+                <p>飲んだ量</p>
+                <p>適量</p>
+            </section>
+
+                <section class="features">
+                    <div class="container">
+                        <div class="container2">
+                            <p>飲み始めてからの時間</p>
+                            <div id="timer">00:00</div>
+                            <div class="controls">
+                                <div class="btn" id="start">Start</div>
+                                <div class="btn" id="stop">Stop</div>
+                                <div class="btn" id="reset">Reset</div>
+                            </div>
+                        </div>
+                        <script src="{% static 'prj/js/watch.js' %}"></script>
+                </section>
+
+                    <script src="{% static 'prj/js/menu.js' %}"></script>
+</body>
+
+</html>

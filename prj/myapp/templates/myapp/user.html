@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>お酒管理</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+
+<body>
+    <header>
+        <div class="container">
+            <i id="open_menu" class="far fa-bars"></i>
+            <!--<nav id="menu" class="shown">-->
+            <nav id="menu">
+                <i id="close_menu" class="fas fa-times"></i>
+                <ul>
+                  <li>
+                    <a href="{% url 'myapp:home' %}">ホーム</a>
+                  </li>
+                    <li>
+                        <a href="{% url 'myapp:Input_View' %}">入力</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:User_View' %}">ユーザー</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'myapp:HowtoUse_View' %}">使用方法</a>
+                    </li>
+                </ul>
+
+            </nav>
+            <h1>ユーザー情報</h1>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+    <p>生年月日　
+        <input type="date">
+        <input type="submit" name="submit" value="決定">
+    </p>
+    <p>身長
+        <input type="number" name="number" min="100" max="200">
+        <input type="submit" name="submit" value="決定">
+    </p>
+    <p>体重
+        <input type="number" name="number" min="30" max="200">
+        <input type="submit" name="submit" value="決定">
+    </p>
+    <p>お酒の強さ(1から5段階入力)
+        <input type="number" name="number" min="1" max="5"> 最弱1 最強5
+        <input type="submit" name="submit" value="決定">
+    </p>
+    <p>体調(1から5段階入力)
+        <input type="number" name="number" min="1" max="5"> 悪い1 良い5
+        <input type="submit" name="submit" value="決定">
+    </p>
+    </section>
+
+                  <script src="{% static 'js/menu.js' %}"></script>
+</body>
+
+</html>

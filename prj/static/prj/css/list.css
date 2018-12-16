@@ -1,0 +1,29 @@
+body{
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+/*
+.container3{
+    width: 500px;
+    margin: auto;
+}
+*/
+#app h1{
+    font-size: 60px;
+    border-bottom: 1p solid #ddd;
+    padding: 16px 0;
+}
+
+#app li {
+  line-height: 1.5;
+}
+
+#app input[type="text"] {
+  padding: 2px;
+}
+.command{
+    font-size: 12px;
+    cursor: pointer;
+    color: rgb(226, 29, 29);
+}
