@@ -69,9 +69,38 @@ class Photo(models.Model):
 
 
 class Alcohol(models.Model):
+    DEGREE_CHOICES = (
+        ('', '度数を選択してください。'),
+        (3, '3%'),
+        (4, '4%'),
+        (5, '5%'),
+        (6, '6%'),
+        (7, '7%'),
+        (8, '8%'),
+        (10, '10%'),
+        (12, '12%'),
+        (14, '14%'),
+        (15, '15%'),
+        (17, '17%'),
+        (20, '20%'),
+        (25, '25%'),
+        (30, '30%'),
+        (35, '35%'),
+        (40, '40%'),
+        (45, '45%'),
+    )
+    VALUE_CHOICES = (
+        ('','量(サイズ)を選択してください。'),
+        (180, '180ml(1合分)'),
+        (200, '200ml(コップ1杯分)'),
+        (350, '350ml(通常の1缶分)'),
+        (500, '500ml(縦長の1缶分)'),
+        (750, '750ml(4合瓶)'),
+        (1800, '1800ml(1小瓶)'),
+    )
     name = models.CharField(max_length=20, default = NAME)
-    degree = models.IntegerField(default=0) #百分率(%)でアルコール濃度の入力
-    value = models.IntegerField(default=0) #飲んだ量(ml)
-    number = models.IntegerField(default=0) #飲んだ本数(本)
+    degree = models.IntegerField(default=0,choices=DEGREE_CHOICES) #百分率(%)でアルコール濃度の入力
+    value = models.IntegerField(default=0,choices=VALUE_CHOICES) #飲んだ量(ml)
+    #number = models.IntegerField(default=0) #飲んだ本数(本)
     #user_id = models.IntegerField() #user ID
 

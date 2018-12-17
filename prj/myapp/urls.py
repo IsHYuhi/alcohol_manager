@@ -10,5 +10,6 @@ urlpatterns = [
     path('howtouse/', views.HowtoUse_View, name = 'HowtoUse_View'),
     path('user/', views.User_View, name = 'User_View'),
     path('database/', views.database, name='database'),
-    path('nowloading/',views.nowloading, name='nowloading')
+    path('nowloading/',views.nowloading, name='nowloading'),
+    path('database/delete', views.delete, name='delete'),
 ]

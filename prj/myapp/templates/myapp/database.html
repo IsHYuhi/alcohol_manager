@@ -11,19 +11,22 @@
     <h1>{{title}}</h1>
     <p>{{message|safe}}</p>
 
+    <form action="{% url 'myapp:delete' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="全て削除">
+    </form>
+
     <table>
         <tr>
             <th>名前</th>
             <th>度数(%)</th>
             <th>量(ml)</th>
-            <th>飲んだ本数</th>
         </tr>
     {% for item in data %}
         <tr>
             <td>{{item.name}}</td>
             <td>{{item.degree}}</td>
             <td>{{item.value}}</td>
-            <td>{{item.number}}</td>
         </tr>
     {% endfor %}
     </table>

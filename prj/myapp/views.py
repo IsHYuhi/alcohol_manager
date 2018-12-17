@@ -90,7 +90,7 @@ def form_valid(request):
         'result':rank3,
     }
 
-    f = open('/Users/yuhi/django/prj/myapp/number.py', 'w')
+    f = open('/Users/yuhi/django/prj/myapp/name.py', 'w')
     f.write("NAME = '"+ rank3 +"'")
     f.close()
 
@@ -129,6 +129,8 @@ def database(request):
 
     return render(request, 'myapp/database.html', params)
 
-
+def delete(request):
+    Alcohol.objects.all().delete()
+    return redirect('/myapp/database')#ここはパスを指定
 
 

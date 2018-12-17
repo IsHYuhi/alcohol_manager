@@ -7,4 +7,4 @@ class PhotoForm(forms.Form):
 class AlcoholData(forms.ModelForm):
     class Meta:
         model = Alcohol
-        fields = ['name', 'degree', 'value', 'number'] #user_id消去済み
+        fields = ['name', 'degree', 'value'] #user_id消去済み
