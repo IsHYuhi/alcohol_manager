@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -7,61 +8,163 @@
   <title>お酒管理</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
   crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'prj/css/watch.css' %}">
-  <link rel="stylesheet" href="{% static 'prj/css/list.css' %}">
+  <link rel="stylesheet" href="{% static 'prj/css/button.css' %}">
+  <link rel="stylesheet" href="{% static 'prj/css/bubble.css' %}">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
-<body>
-  <header>
-    <div class="container">
-      <i id="open_menu" class="far fa-bars"></i>
-      <nav id="menu">
-        <i id="close_menu" class="fas fa-times"></i>
+<h1>alcohol manager</h1>
+<div class="panel">
+  <a href="{% url 'myapp:home' %}">
+    <button>
+      <i class="fas fa-home fa-4x fa-fw"></i>
+    </button>
+  </a>
+  <a href="{% url 'myapp:User_View' %}">
+    <button>
+      <i class="fas fa-user fa-4x fa-fw"></i>
+    </button>
+  </a>
+  <a href="{% url 'myapp:database' %}">
+    <button>
+      <i class="fas fa-list-alt fa-4x fa-fw"></i>
+    </button>
+  </a>
+  <a href="{% url 'myapp:HowtoUse_View' %}">
+    <button>
+      <i class="fas fa-cog fa-4x fa-fw"></i>
+    </button>
+  </a>
+</div>
+<div class="panel borderless">
 
-        <ul>
-          <li>
-            <a href="{% url 'myapp:home' %}">ホーム</a>
-          </li>
-          <li>
-            <a href="{% url 'myapp:User_View' %}">ユーザー</a>
-          </li>
-          <li>
-            <a href="{% url 'myapp:HowtoUse_View' %}">使用方法</a>
-          </li>
-          <li>
-            <a href="{% url 'myapp:database' %}">履歴</a>
-          </li>
-        </ul>
 
-      </nav>
-      <h1>ホーム</h1>
-    </div>
-  </header>
-  <section>
-    <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form }}
-      <input type="submit" accept="image/" value="投稿" />
-      <br>
-      <a class="link_button" href="{% url 'myapp:Input_View' %}">入力</a>
-    </form>
-  </section>
-  <section class="features">
-    <div class="container">
-      <div class="container2">
-        <p>飲み始めてからの時間</p>
-        <div id="timer">00:00.000</div>
-        <div class="controls">
-          <div class="btn" id="start">Start</div>
-          <div class="btn" id="stop">Stop</div>
-          <div class="btn" id="reset">Reset</div>
-        </div>
-      </div>
-      <script src="{% static 'prj/js/watch.js' %}"></script>
-    </section>
-    <script src="{% static 'prj/js/menu.js' %}"></script>
-  </body>
 
-  </html>
+  <form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <label></label>
+
+    {{ form.image | add_class:"fas fa-camera-retro fa-4x fa-fw"}}
+    <button>
+    </button>
+
+    <button  type="submit" accept="image/">
+      <i class="far fa-paper-plane fa-4x fa-fw"></i>
+    </button>
+  </form>
+
+  <a href="{% url 'myapp:Input_View' %}">
+    <button>
+      <i class="fas fa-pencil-alt fa-4x fa-fw"></i>
+    </button>
+  </a>
+</div>
+
+<div class="container">
+  <div class="bubble-wrap">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+</div>
+
+
+</html>

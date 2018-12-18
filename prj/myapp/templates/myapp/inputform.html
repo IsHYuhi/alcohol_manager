@@ -8,69 +8,65 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
   crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'prj/css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'prj/css/watch.css' %}">
-  <link rel="stylesheet" href="{% static 'prj/css/list.css' %}">
+  <link rel="stylesheet" href="{% static 'prj/css/input2.css' %}">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
 <body>
   <header>
     <div class="container">
-      <i id="open_menu" class="far fa-bars"></i>
+      <i id="open_menu" class="fas fa-bars"></i>
       <nav id="menu">
         <i id="close_menu" class="fas fa-times"></i>
-
         <ul>
           <li>
-            <a href="{% url 'myapp:home' %}">ホーム</a>
+            <a href="{% url 'myapp:home' %}">
+              <i class="fas fa-home fa-2x"></i>
+            </a>
           </li>
         </ul>
 
       </nav>
-      <h1>入力フォーム</h1>
     </div>
   </header>
 
-  <section class="features">
-    <div class="container">
-      <h1>飲んだお酒</h1>
 
-      <div id="app" class="container">
+  <div id="form-main">
+    <div id="form-div">
 
-        <ul>
-          <li v-for="(todo,index) in todos">
-            {{todo}}
-            <span @click="deleteItem(index)" class="command">[x]</span>
-          </li>
-        </ul>
-        <p>お酒のリスト
-          <script>
-          if("{{result}}" != ""){
-            document.write("{{result}}と判別されました")
-          }
-          </script>
-          <a href="{% url 'myapp:home' %}">画像認識</a><br>
-          <form action="{% url 'myapp:Input_View' %}" method="post">
-            {% csrf_token %}
-            <label>お酒のジャンル</label>:
-            {{ form.name }}
-            <p>{{ form.name.help_text }}</p>
-            <label>お酒の度数</label>:
-            {{ form.degree }}
-            <p>{{ form.degree.help_text }}</p>
-            <label>お酒の量(単位:ml)</label>:
-            {{ form.value }}
-            <p>{{ form.value.help_text }}</p>
+        <p1>入力フォーム</p1>
 
-            <tr><td></td><td><input type="submit" value="送信"></td></tr>
+        <p class="name">
+          <i class="fas fa-beer"></i>
+        </p>
+
+        <script>
+        if("{{result}}" != ""){
+          document.write("{{result}}と判別されました")
+        }
+        </script>
+
+        <form action="{% url 'myapp:Input_View' %}" method="post">
+          {% csrf_token %}
+          <label>お酒の種類</label>
+          {{ form.name }}
+          <p>{{ form.name.help_text }}</p>
+          <label>度数</label>
+          {{ form.degree }}
+          <p>{{ form.degree.help_text }}</p>
+          <label>量(ml)</label>
+          {{ form.value }}
+          <p>{{ form.value.help_text }}</p>
+
+          <div class="submit">
+            <input type="submit" value="登録" id="button-blue">
           </form>
+          <div class="ease"></div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script src="{% static 'prj/js/list.js' %}"></script>
 
-      </section>
 
+      </div>
       <script src="{% static 'prj/js/menu.js' %}"></script>
-    </body>
 
+    </body>
     </html>

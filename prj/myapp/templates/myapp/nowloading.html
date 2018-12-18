@@ -1,7 +1,23 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="ja">
-<h1>
-nowloading...
-</h1>
-<a href="{% url 'myapp:Input_View' %}">結果</a>
+
+<head>
+    <meta charset="utf-8">
+    <title>お酒管理</title>
+    <link rel="stylesheet" href="{% static 'prj/css/loading.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="refresh" content="4;{% url 'myapp:Input_View' %}">.
+</head>
+<div id="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<!-- <script src="{% static 'prj/js/loading.js' %}">
+ </script> -->
+
 </html>

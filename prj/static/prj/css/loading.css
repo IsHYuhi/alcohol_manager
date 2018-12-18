@@ -1,0 +1,69 @@
+body {
+  background: #f8d408;
+}
+
+#loader{
+  /* border: solid;  to test position */
+  width: 170px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px -85px;
+  
+}
+
+#loader div{
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-animation: animate 1.4s ease infinite;
+}
+
+
+#loader div:nth-child(2) {
+  margin-left: 30px;
+  -webkit-animation-delay: .08s;
+}
+
+#loader div:nth-child(3) {
+  margin-left: 60px;
+  -webkit-animation-delay: .16s;
+}
+
+#loader div:nth-child(4) {
+  margin-left: 90px;
+  -webkit-animation-delay: .24s;
+}
+
+#loader div:nth-child(5) {
+  margin-left: 120px;
+  -webkit-animation-delay: .32s;
+}
+
+#loader div:nth-child(6) {
+  margin-left: 150px;
+  -webkit-animation-delay: .40s;
+}
+
+@-webkit-keyframes animate {
+  0%{left: 0px; top: 0px;}
+  5%{left: -2px; top: 4px; width: 24px; height: 16px; -webkit-filter: blur(0.1px);}
+  10%{left: -1px; top: 4px; width: 22px; height: 18px; -webkit-filter: blur(0.1px);} 
+  /*halfway up*/
+  15%{left: 1px; top: -17px; width: 18px; height: 22px; -webkit-filter: blur(0.3px);} 
+  /*top*/
+  22%{left: 0px; top: -34px; width: 20px; height: 20px; -webkit-filter: blur(0.2px);} 
+  /*halfway down*/
+  29%{left: 1px; top: -17px; width: 18px; height: 22px; -webkit-filter: blur(0.3px);} 
+  /*bottom*/
+  34%{left: 1px; top: 0px;  width: 18px; height: 22px; -webkit-filter: blur(0.2px);}
+  /*elastic bottom*/
+  40%{left: -1px; top: 4px; width: 22px; height: 18px; -webkit-filter: blur(0.1px);} 
+  /*end*/
+  43%{left: 0px; top: 0px; width: 20px; height: 20px;-webkit-filter: blur(0px)} 
+  100%{left: 0px; top: 0px;}
+}
+
