@@ -159,7 +159,7 @@ def database(request):
     result = round(result,2)
 
     if result < 0.02:
-        params['condition'] = 'まだ酔っていません'
+        params['condition'] = 'シラフ'
         params['message'] = '<font color="green">このアプリを通じて楽しいお酒の飲み方を覚えましょう!</font>'
     elif result < 0.05 :
         params['condition'] = '爽快期'
