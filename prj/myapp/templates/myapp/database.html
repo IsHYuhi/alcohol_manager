@@ -18,39 +18,6 @@
 
 <body>
 
-  <section class="demo">
-
-    <dl class="list maki">
-
-      <form action="{% url 'myapp:delete' %}" method="post">
-        {% csrf_token %}
-        <button  type="submit">
-          <i  id = "trash" class="fas fa-trash fa-2x fa-fw"></i>
-        </button>
-      </form>
-
-      <dt>
-        <tr>
-          <th>　名前　　</th>
-          <th>度数(%)　　　</th>
-          <th>量(ml)</th>
-        </tr>
-      </dt>
-      {% for item in data %}
-      <dd>
-          <span>{{item.name}}</span>
-          <span>{{item.degree}}</span>
-          {{item.value}}
-      </dd>
-      {% endfor %}
-
-    </dl>
-
-
-    <a href="#" class="toggle">飲んだリストの開閉</a>
-
-  </section>
-
   <header class="header">
     <i id="open_menu" class="fas fa-bars"></i>
     <nav id="menu">
@@ -73,10 +40,50 @@
       </ul>
     </nav>
     <script src="{% static 'prj/js/menu.js' %}"></script>
-    <h1>ここに状態</h1>
+
+    <h1>{{condition}}</h1>
+    {{message|safe}}
 
   </div>
 </header>
+<section class="demo">
+
+  <dl class="list maki">
+    <form action="{% url 'myapp:delete' %}" method="post">
+      {% csrf_token %}
+      <button  type="submit">
+        <i  id = "trash" class="fas fa-trash fa-2x fa-fw"></i>
+      </button>
+
+
+    </form>
+    <dt align="center">
+      飲んだものリスト
+    </dt>
+
+    <dt>
+      <tr>
+        <th>　名前　　</th>
+        <th>度数(%)　　　</th>
+        <th>量(ml)</th>
+      </tr>
+    </dt>
+    {% for item in data %}
+    <dd>
+      <span>{{item.name}}</span>
+      <span>{{item.degree}}</span>
+      {{item.value}}
+    </dd>
+    {% endfor %}
+
+  </dl>
+
+
+  <a href="#" class="toggle">リストの開閉</a>
+
+</section>
+
+
 <script src="{% static 'prj/js/displayData.js'%}"></script>
 </body>
 </html>

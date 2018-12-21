@@ -4,6 +4,8 @@ from .forms import PhotoForm
 from django.http import HttpResponse
 from .models import Alcohol #models.pyのimport
 from .forms import AlcoholData #forms.pyのAlcoholData()のimport
+from .forms import WeightForm #追記ver2
+from .models import InfoUser #追記ver3!!!!!!!
 from time import sleep
 from .name import NAME
 
@@ -49,10 +51,25 @@ def HowtoUse_View(req):
     return render(req, 'myapp/howtouse.html')
 
 def User_View(req):
-    return render(req,'myapp/user.html')
+    params = {
+        'title': '体重などのユーザデータ情報',
+        'form_weight': WeightForm(),
+        'user_info': [],
+    }
+    if(req.method == 'POST'):
+        obj = InfoUser()
+        user_info = WeightForm(req.POST, instance=obj)
+        # if not user_info.is_valid():
+        #     raise ValueError('invalid form')
+        user_info.save()
+        return redirect( '/myapp/home')
+    return render(req,'myapp/user.html', params)
 
 def nowloading(req):
     return render(req, 'myapp/nowloading.html')
+
+
+
 
 
 def form_valid(request):
@@ -110,26 +127,80 @@ def input(request):
     }
     return render(request, 'myapp/inputform.html', params)
 
-def database(request):
-    params = {
-        'title': 'データベース情報',
-        'message': 'データベースの全データです。',
-        'form': AlcoholData(),
-        'data': [],
-    }
-
-    #POST送信のチェック
-    if(request.method == 'POST'):
-        id = request.POST['id']
-        #params['data'] = Alcohol.objects.all().filter(user_id=id) #user_idとforms.pyの変数idの一致するものを表示
-        params['form'] = AlcoholData(request.POST)
-    else:
-        params['data'] = Alcohol.objects.all()
-
-    return render(request, 'myapp/database.html', params)
 
 def delete(request):
     Alcohol.objects.all().delete()
     return redirect('/myapp/database')#ここはパスを指定
 
+def database(request):
+    params = {
+        'title': 'データベース情報',
+        'message': 'データベースの全データです。',
+        'condition': '',
+        'data': [],
+        'detail1': '',
+        'detail2': '',
+        'detail3': '',
+        'detail4': '',
+    }
 
+    params['data'] = Alcohol.objects.all()
+    alcohol_data = Alcohol.objects.all()
+    user_info = InfoUser.objects.all().last()
+    intake_alcohol = 0.0
+
+    for item in alcohol_data:
+        intake_alcohol += item.degree*float(item.value)
+
+    intake_alcohol *= 0.8 #アルコール比重
+
+
+    result = intake_alcohol /100.0 *0.15 / float(user_info.weight)
+    result = round(result,2)
+
+    if result < 0.02:
+        params['condition'] = 'まだ酔っていません'
+        params['message'] = '<font color="green">このアプリを通じて楽しいお酒の飲み方を覚えましょう!</font>'
+    elif result < 0.05 :
+        params['condition'] = '爽快期'
+        params['message'] = '<font color="skyblue">お酒はとても楽しいですね。ほどほどに...</font>'
+        params['detail1'] = 'さわやかな気分になる'
+        params['detail2'] = '皮膚が赤くなる'
+        params['detail3'] = '陽気になる'
+        params['detail4'] = '判断力が少しにぶる'
+    elif result < 0.1 :
+        params['condition'] = 'ほろ酔い期'
+        params['message'] = '<font color="blue">お酒との付き合い方が上手い方はここらへんで飲むのをやめます。</font>'
+        params['detail1'] = '手の動きが活発になる'
+        params['detail2'] = '抑制がとれる（理性が失われる）'
+        params['detail3'] = '体温が上がる'
+        params['detail4'] = '脈が速くなる'
+    elif result < 0.15 :
+        params['condition'] = '酩酊初期'
+        params['message'] = '<font color="purple">これ以上飲むと取り返しのつかないことになり兼ねます。注意しましょう。</font>'
+        params['detail1'] = '気が大きくなる'
+        params['detail2'] = '大声でがなりたてる'
+        params['detail3'] = 'おこりっぽくなる'
+        params['detail4'] = '立てばふらつく'
+    elif result < 0.3 :
+        params['condition'] ='酩酊期'
+        params['message'] = '<font color="magenta">人に迷惑をかけます。今すぐ帰る準備をしましょう。</font>'
+        params['detail1'] = '何度も同じことをしゃべる'
+        params['detail2'] = '千鳥足になる'
+        params['detail3'] = '呼吸が速くなる'
+        params['detail4'] = '吐き気、おう吐がおこる'
+    elif result < 0.4 :
+        params['condition'] = '泥酔期'
+        params['message'] = '<font color="pink">記憶できない状態です。お酒をやめましょう。</font>'
+        params['detail1'] = 'まともに立てない'
+        params['detail2'] = '意識がはっきりしない'
+        params['detail3'] = '言語がめちゃめちゃになる'
+    else :
+        params['condition'] = '昏睡期'
+        params['message'] = '<font color="red">命が危険です！お酒をやめてください!!!</font>'
+        params['detail1'] = 'ゆり動かしても起きない'
+        params['detail2'] = '大小便はたれ流しになる'
+        params['detail3'] = '呼吸はゆっくりと深い'
+        params['detail4'] = '死亡'
+
+    return render(request, 'myapp/database.html', params)

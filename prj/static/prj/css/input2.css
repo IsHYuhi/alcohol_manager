@@ -2,6 +2,11 @@ p1{
   font-size: 20px;
 }
 
+#open_menu{
+  margin-right: 20px!important;
+  display: block;
+}
+
 #feedback-page{
   text-align:center;
 }

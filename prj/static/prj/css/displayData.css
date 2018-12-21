@@ -56,7 +56,7 @@ a {
     letter-spacing: -1px;
     text-shadow: -2px -1px 1px #fff, 1px 2px 2px rgba(0, 0, 0, 0.2);
     font-weight: 300;
-    font-size: 36px;
+    font-size: 24px;
     /* position: absolute;
     top: 0;
     right: 0;
@@ -169,7 +169,7 @@ color: #1b1b1b;
     position: absolute;
     z-index: 1;
     height: 50px;
-    bottom: 10%;
+    bottom: 0%;
     width: 140px;
     color: #fff;
     left: 50%;
@@ -282,6 +282,10 @@ color: #1b1b1b;
     transform-origin: -10% 25%;
 
     left: 80%;
+}
+
+.condition{
+      font-size: 6px;
 }
 
 /* #trash{

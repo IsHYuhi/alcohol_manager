@@ -42,30 +42,34 @@
   </header>
 
   <section class="features">
-    <div class="container">
-      <p>生年月日　
-        <input type="date">
-        <input type="submit" name="submit" value="決定">
-      </p>
-      <p>身長
-        <input type="number" name="number" min="100" max="200">
-        <input type="submit" name="submit" value="決定">
-      </p>
-      <p>体重
-        <input type="number" name="number" min="30" max="200">
-        <input type="submit" name="submit" value="決定">
-      </p>
-      <p>お酒の強さ(1から5段階入力)
-        <input type="number" name="number" min="1" max="5"> 最弱1 最強5
-        <input type="submit" name="submit" value="決定">
-      </p>
-      <p>体調(1から5段階入力)
-        <input type="number" name="number" min="1" max="5"> 悪い1 良い5
-        <input type="submit" name="submit" value="決定">
-      </p>
-    </section>
+    <form action="{% url 'myapp:User_View' %}" method="post">
+      {% csrf_token %}
+      <div class="container">
+        <p>生年月日　
+          <input type="date">
 
-    <script src="{% static 'prj/js/menu.js' %}"></script>
-  </body>
+        </p>
+        <p>身長
+          <input type="number" name="number" min="100" max="200">
 
-  </html>
+        </p>
+
+        <label>体重</label>
+        {{ form_weight.weight }}
+        <p>{{ form_weight.weight.help_text }}</p>
+
+        <label>年齢</label>
+        {{ form_weight.age }}
+        <p>{{ form_weight.age.help_text }}</p>
+        <tr><td></td><td><input type="submit" value="保存"></td></tr>
+      </div>
+
+
+
+    </form>
+  </section>
+
+  <script src="{% static 'prj/js/menu.js' %}"></script>
+</body>
+
+</html>

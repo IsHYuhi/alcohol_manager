@@ -103,4 +103,9 @@ class Alcohol(models.Model):
     value = models.IntegerField(default=0,choices=VALUE_CHOICES) #飲んだ量(ml)
     #number = models.IntegerField(default=0) #飲んだ本数(本)
     #user_id = models.IntegerField() #user ID
+class InfoUser(models.Model):
+    # nickname = models.CharField(max_length=20)
+    age = models.IntegerField()
+    weight = models.IntegerField()
+
 
