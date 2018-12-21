@@ -31,15 +31,15 @@
 
       <dt>
         <tr>
-          <th>名前</th>
-          <th>度数(%)</th>
+          <th>　名前　　</th>
+          <th>度数(%)　　　</th>
           <th>量(ml)</th>
         </tr>
       </dt>
       {% for item in data %}
       <dd>
-          {{item.name}}
-          {{item.degree}}
+          <span>{{item.name}}</span>
+          <span>{{item.degree}}</span>
           {{item.value}}
       </dd>
       {% endfor %}
