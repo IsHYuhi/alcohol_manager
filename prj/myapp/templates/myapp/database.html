@@ -1,35 +1,81 @@
+<!DOCTYPE html>
 {%load staticfiles%}
-<!doctype html>
 <html lang="ja">
+
 <head>
-    <meta charset="utf-8">
-    <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'prj/css/style.css'%}"/>
+  <meta charset="utf-8">
+  <title>お酒管理</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+  crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'prj/css/displayData.css'%}"/>
+  <link rel="stylesheet" href="{% static 'prj/css/button.css' %}">
+  <link rel="stylesheet" href="{% static 'prj/css/styles0.css' %}">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body>
-    <h1>{{title}}</h1>
-    <p>{{message|safe}}</p>
 
-    <form action="{% url 'myapp:delete' %}" method="post">
+  <section class="demo">
+
+    <dl class="list maki">
+
+      <form action="{% url 'myapp:delete' %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="全て削除">
-    </form>
+        <button  type="submit">
+          <i  id = "trash" class="fas fa-trash fa-2x fa-fw"></i>
+        </button>
+      </form>
 
-    <table>
+      <dt>
         <tr>
-            <th>名前</th>
-            <th>度数(%)</th>
-            <th>量(ml)</th>
+          <th>名前</th>
+          <th>度数(%)</th>
+          <th>量(ml)</th>
         </tr>
-    {% for item in data %}
-        <tr>
-            <td>{{item.name}}</td>
-            <td>{{item.degree}}</td>
-            <td>{{item.value}}</td>
-        </tr>
-    {% endfor %}
-    </table>
-    <a href="{% url 'myapp:home' %}">ホーム</a>
+      </dt>
+      {% for item in data %}
+      <dd>
+          {{item.name}}
+          {{item.degree}}
+          {{item.value}}
+      </dd>
+      {% endfor %}
+
+    </dl>
+
+
+    <a href="#" class="toggle">飲んだリストの開閉</a>
+
+  </section>
+
+  <header class="header">
+    <i id="open_menu" class="fas fa-bars"></i>
+    <nav id="menu">
+      <i id="close_menu" class="fas fa-times"></i>
+
+      <ul>
+        <li>
+          <a href="{% url 'myapp:home' %}"><i class = "fas fa-home fa-2x"></i></a>
+        </li>
+        <li>
+          <a href="{% url 'myapp:User_View' %}"><i class = "fas fa-user fa-2x"></i></a>
+        </li>
+        <li>
+          <a href="{% url 'myapp:database' %}"><i class = "fas fa-list-alt fa-2x"></i></a>
+        </li>
+        <li>
+          <a href="{% url 'myapp:HowtoUse_View' %}"><i class = "fas fa-cog fa-2x"></i></a>
+        </li>
+
+      </ul>
+    </nav>
+    <script src="{% static 'prj/js/menu.js' %}"></script>
+    <h1>ここに状態</h1>
+
+  </div>
+</header>
+<script src="{% static 'prj/js/displayData.js'%}"></script>
 </body>
 </html>

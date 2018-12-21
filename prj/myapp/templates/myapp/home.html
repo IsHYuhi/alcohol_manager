@@ -36,29 +36,32 @@
     </button>
   </a>
 </div>
+
 <div class="panel borderless">
-
-
-
-  <form action="" method="POST" enctype="multipart/form-data">
-
+  <form action="" method="POST" enctype="multipart/form-data" style="display: inline">
     {% csrf_token %}
-    <label></label>
-
-    {{ form.image | add_class:"fas fa-camera-retro fa-4x fa-fw"}}
     <button>
-    </button>
-
+    <i id ="upload" class="fas fa-camera-retro fa-4x fa-fw"></i>
+  </button>
+    {{ form.image}}
     <button  type="submit" accept="image/">
       <i class="far fa-paper-plane fa-4x fa-fw"></i>
     </button>
   </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>
+  $('i#upload').click(function () {
+    $('input[type="file"]').trigger('click');
+  });
+  </script>
 
   <a href="{% url 'myapp:Input_View' %}">
     <button>
       <i class="fas fa-pencil-alt fa-4x fa-fw"></i>
     </button>
   </a>
+
 </div>
 
 <div class="container">

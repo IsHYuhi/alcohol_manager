@@ -30,7 +30,6 @@ def home(req):
     if req.method == 'GET':
         return render(req, 'myapp/home.html', {
             'form': PhotoForm(),
-            'photos': Photo.objects.all(), #いらないかも
         })
 
     elif req.method == 'POST':
