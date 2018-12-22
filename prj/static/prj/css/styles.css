@@ -138,4 +138,7 @@ header h1 {
   font-size: 15px;
 }
 
-
+span{
+  display: inline-block;
+   width: 9em;
+}
