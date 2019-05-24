@@ -24,4 +24,4 @@ ___
 
 サーバーにアップしておらず,データセットのファイルやパス指定の関係で自分の環境でしか実行はできない。
 
-![result](https://github.com/IsHYuhi/gif/health_hack_a_thon/myappgif.gif?raw=true)
+![result](https://github.com/IsHYuhi/health_hack_a_thon/blob/gif/myappgif.gif?raw=true)
