@@ -15,4 +15,5 @@ http://localhost:8080/myapp/home/
 #set URL
 
 in prj/prj/settings.py
+
 ALLOWED_HOSTS = [XXX.XXX.XXX.XXX](set your IP address)
