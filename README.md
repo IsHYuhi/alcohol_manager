@@ -24,4 +24,6 @@ ___
 
 サーバーにアップしておらず,データセットのファイルやパス指定の関係で自分の環境でしか実行はできない。
 
+### 実際の動画
+
 ![result](https://github.com/IsHYuhi/health_hack_a_thon/blob/gif/myappgif.gif?raw=true)
