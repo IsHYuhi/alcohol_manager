@@ -1,6 +1,6 @@
 # health_hack_a_thon
 
-#runserver
+#runserver\n
 python3 manage.py runserver XXXX(port number)
 
 #default
