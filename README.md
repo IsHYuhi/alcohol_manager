@@ -17,3 +17,8 @@ http://localhost:8080/myapp/home/
 in prj/prj/settings.py
 
 ALLOWED_HOSTS = [XXX.XXX.XXX.XXX](set your IP address)
+
+
+*要改善
+
+サーバーにアップしておらず,データセットのファイルやパス指定の関係で自分の環境でしか実行はできない。
