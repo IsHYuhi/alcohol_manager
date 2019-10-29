@@ -1,4 +1,4 @@
-# health_hack_a_thon
+# alcohol manager
 
 ### runserver
 
